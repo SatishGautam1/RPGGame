@@ -1,9 +1,9 @@
-#RPG Game (Java + Swing)
+## RPG Game (Java + Swing)
 
 A step-by-step RPG game project buitl in Java using Swing.
 Developed for learning game architecture, rendering, and mechanics.
 
-##Features
+## Features
 - Custom game window with minimize/maximize/close
 - Rendering panel for graphics
 - Planned: player, movement, maps, combat system
