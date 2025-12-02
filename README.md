@@ -9,7 +9,7 @@ Developed for learning game architecture, rendering, and mechanics.
 - Planned: player, movement, maps, combat system
 
 ## Setup
-1. Install [Eclipse IDE].
+1. Install [Eclipse IDE] or any other IDE.
 2. Clone this repository.
 	```bash
 	git clone https://github.com/SatishGautam1/RPGGame.git
