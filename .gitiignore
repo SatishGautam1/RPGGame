@@ -1,0 +1,12 @@
+#Eclipse specific
+.classpath
+.project
+.settings/
+
+#Build output
+bin/
+target/
+
+#OS files
+*.swp
+*.log
