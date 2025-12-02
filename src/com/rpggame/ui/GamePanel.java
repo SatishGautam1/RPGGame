@@ -91,6 +91,20 @@ public class GamePanel extends JPanel implements KeyListener{
 			break;
 			case KeyEvent.VK_D: player.moveRight(getWidth());
 			break;
+			
+			//--Simulate damage/healing
+			case KeyEvent.VK_J: //damage hp
+				player.takeDamage(10);
+				break;
+			case KeyEvent.VK_K: //heal hp
+				player.heal(10);
+				break;
+			case KeyEvent.VK_U: //Use mp
+				player.useMana(10);
+				break;
+			case KeyEvent.VK_I: //Restore mp
+				player.restoreMana(10);
+				break;
 		}
 	}
 	

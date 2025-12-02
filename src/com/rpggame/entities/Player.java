@@ -1,13 +1,16 @@
 package com.rpggame.entities;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.*;
+import javax.swing.ImageIcon;
+
 
 public class Player {
     private int x;
     private int y;
     private int size;
     private int speed;
+    
+    private Image sprite;
 
     // Stats
     private int hp;
@@ -18,7 +21,7 @@ public class Player {
     public Player(int x, int y) {
         this.x = x;
         this.y = y;
-        this.size = 50;
+        this.size = 64;
         this.speed = 5; // smoother movement
 
         // Example stats
@@ -26,6 +29,9 @@ public class Player {
         this.mp = 100;
         this.strength = 10;
         this.defense = 5;
+        
+        //Load default sprite (Idel)
+        sprite = new ImageIcon(getClass().getResource("/com/rpggame/assets/HeroKnight_Idel_0.png")).getImage();
     }
 
     // Movement with boundary checks
@@ -55,8 +61,7 @@ public class Player {
 
     // Render player
     public void draw(Graphics g) {
-        g.setColor(Color.GREEN);
-        g.fillRect(x, y, size, size);
+       g.drawImage(sprite, x, y, size, size, null);
     }
 
     // Getters for stats
@@ -64,4 +69,24 @@ public class Player {
     public int getMp() { return mp; }
     public int getStrength() { return strength; }
     public int getDefense() { return defense; }
+    
+    public void takeDamage(int amount) {
+    	hp -= amount;
+    	if (hp < 0) hp = 0; //prevent negative hp
+    }
+    
+    public void heal(int amount) {
+    	hp += amount;
+    	if (hp > 100) hp = 100; //cap at max hp
+    }
+    
+    public void useMana(int amount) {
+    	mp -= amount;
+    	if (mp < 0) mp = 0;
+    }
+    
+    public void restoreMana(int amount) {
+    	mp += amount;
+    	if (mp > 100) mp = 100;
+    }
 }
