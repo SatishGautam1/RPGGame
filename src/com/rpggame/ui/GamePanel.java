@@ -41,17 +41,40 @@ public class GamePanel extends JPanel implements KeyListener{
 		player.draw(g); //Draw player
 		
 		// -- HUD Section --
-		g.setColor(Color.WHITE);
 		g.setFont(new Font("Arial", Font.BOLD, 16));
 		
 		int hudX = 10; //left margin
 		int hudY = 20; //starting height
 		
-		g.drawString("HP: " + player.getHp(), hudX, hudY);
-		g.drawString("MP: " + player.getMp(), hudX, hudY + 20);
-		g.drawString("Strength: " + player.getStrength(), hudX, hudY + 40);
-		g.drawString("Defense: " + player.getDefense(), hudX, hudY + 60);
+		//HP Bar
+		int maxHp = 100; // for now, fixed max
+		int hpWidth = 200; //pixel width for bar
+		int hpHeight = 20;
 		
+		g.setColor(Color.GREEN);
+		int currentHpWidth = (int) ((player.getHp() / (double) maxHp) * hpWidth);
+		g.fillRect(hudX, hudY, currentHpWidth, hpHeight);
+		g.setColor(Color.WHITE);
+		g.drawRect(hudX, hudY, hpWidth, hpHeight);
+		g.drawString("HP: " + player.getHp(), hudX + hpWidth + 10, hudY + 15);
+		
+		//HP Bar
+		int maxMp = 100; // for now, fixed max
+		int mpWidth = 200; //pixel width for bar
+		int mpHeight = 20;
+		int mpY = hudY + 40;
+				
+		g.setColor(Color.GREEN);
+		int currentMpWidth = (int) ((player.getMp() / (double) maxMp) * mpWidth);
+		g.fillRect(hudX, mpY, currentMpWidth, mpHeight);
+		g.setColor(Color.WHITE);
+		g.drawRect(hudX, mpY, mpWidth, mpHeight);
+		g.drawString("MP: " + player.getMp(), hudX + mpWidth + 10, mpY + 15);
+		
+		//Strength & Defense as text
+		g.setColor(Color.WHITE);
+		g.drawString("Strength: " + player.getStrength(), hudX, mpY + 50);
+		g.drawString("Defense: " + player.getDefense(), hudX, mpY + 70);
 	}
 	
 	//-- Keyboard Listener --
