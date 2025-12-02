@@ -14,6 +14,7 @@ public class GameWindow {
 		
 		//Create a custom panel
 		panel = new GamePanel();
+		panel.requestFocusInWindow();
 		frame.add(panel);
 		
 		frame.setSize(800, 600);
