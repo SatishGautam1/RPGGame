@@ -32,6 +32,7 @@ public class GamePanel extends JPanel implements KeyListener{
 	
 	private void update() {
 		//For now, nothing special in update
+		player.update();
 	}
 	
 	@Override
@@ -105,16 +106,30 @@ public class GamePanel extends JPanel implements KeyListener{
 			case KeyEvent.VK_I: //Restore mp
 				player.restoreMana(10);
 				break;
+			case KeyEvent.VK_SPACE: // Attack1
+			    player.startAttack(1);
+			    break;
+			case KeyEvent.VK_SHIFT: // Attack2
+			    player.startAttack(2);
+			    break;
+			case KeyEvent.VK_CONTROL: // Attack3
+			    player.startAttack(3);
+			    break;
 		}
 	}
 	
 	@Override
 	public void keyReleased(KeyEvent e) {
-		//Not used yet
+		//When movement keys are released , go back to idle
+		int code = e.getKeyCode();
+		if (code == KeyEvent.VK_W || code == KeyEvent.VK_A || code == KeyEvent.VK_S || code == KeyEvent.VK_D) {
+			player.setIdle();
+		}
 	}
 	
 	@Override
 	public void keyTyped(KeyEvent e) {
 		//Not used
 	}
+
 }
